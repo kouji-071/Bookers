@@ -1,21 +1,28 @@
 <div class="body">
   <div class="container">
+    <% if @user.errors.any? %>
+    <%= @user.errors.count %>件のエラー
+    <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+    <% end %>
     <h2>User info</h2>
     <%= form_for(@user) do |f| %>
     <div class="from-group has icon">
       <%= f.label :name, "Name" %>
       <%= f.text_field :name %>
     </div>
-      <div class="form-group has-icon">
-        <div class="user-edit-image">
-          <%= f.label :name, "Image" %>
-          <%= f.attachment_field :profile_image %>
-      </div>
-      <div class="field">
-        <%= f.label :name, "Introduction" %>
-        <%= f.text_area :introduction %>
-      </div>
-      <%= f.submit 'Update User' %>
-      <% end %>
+    <div class="form-group has-icon">
+      <div class="user-edit-image">
+        <%= f.label :name, "Image" %>
+        <%= f.attachment_field :profile_image %>
+        </div>
+        <div class="field">
+          <%= f.label :name, "Introduction" %>
+          <%= f.text_area :introduction %>
+        </div>
+        <%= f.submit 'Update User' %>
+        <% end %>
+    </div>
   </div>
 </div>
