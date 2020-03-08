@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<% if @book.errors.any? %>
-			<%= @book.errors.count %>件のエラー
+			<%= @book.errors.count %>error
 			<% @book.errors.full_messages.each do |message| %>
 			<%= message %>
 			<% end %>
@@ -17,6 +17,10 @@
 				<%= f.text_area :body, class:"col-xs-12 book_body"  %>
 
 				<%= f.submit('Update Book', class:"btn btn-primary col-xs-12") %>
+
+				<%= link_to "Show", book_path %>
+				 |
+				 <%= link_to "Back", books_path %>
 
 				<% end %>
 		    </div>

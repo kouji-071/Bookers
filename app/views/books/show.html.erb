@@ -1,6 +1,10 @@
 <div class="body">
 	<div class="container">
+		<% if flash[:notice] %>
+	    <%= flash[:notice] %>
+		<% end %>
 		<div class="row">
+
 			<div class="col-xs-3">
 				<%= render 'users/list', user: @user %>
 			</div>
@@ -18,26 +22,29 @@
 					<tbody>
 						<tr>
 							<td>
-								<%= link_to @user.name, user_path(@user.id) %>
-								<%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg" %>
-								<br />
+								<%= link_to user_path(@user)  do %>
+								<%= attachment_image_tag @book.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", size:'40x40' %>
+								<br>
+								<br>
+								<%= @user.name %>
+								<% end %>
 							</td>
 							<td>
 								<span>
-									<%= @mybook.title %>
+									<%= @book.title %>
 								</span>
 							</td>
 							<td>
 								<span>
-									<%= @mybook.body %>
+									<%= @book.body %>
 								</span>
 							</td>
-							<% if @mybook.user == current_user %>
+							<% if @book.user == current_user %>
 							<td>
-								<%= link_to "Edit", edit_book_path(@mybook), class: "btn-sm btn-success" %>
+								<%= link_to "Edit", edit_book_path(@book), class: "btn-sm btn-success" %>
 							</td>
 							<td>
-								<%= link_to "Delete", book_path(@mybook), class:"btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+								<%= link_to "Destroy", book_path(@book), class:"btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
 							</td>
 								<% end %>
 						</tr>

@@ -1,7 +1,7 @@
 <div class="body">
   <div class="container">
     <% if @user.errors.any? %>
-    <%= @user.errors.count %>件のエラー
+    <%= @user.errors.count %>error
     <% @user.errors.full_messages.each do |message| %>
     <%= message %>
     <% end %>

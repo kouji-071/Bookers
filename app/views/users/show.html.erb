@@ -1,5 +1,8 @@
 <div class="body">
 	<div class="container">
+		<% if flash[:notice] %>
+		<%= flash[:notice] %>
+		<% end %>
 		<div class="row">
 			<div class="col-xs-3">
 				<%= render 'users/list', user: @user, book: @book %>
@@ -23,7 +26,7 @@
 							</td>
 							<td>
 								<span>
-									<%= link_to book.title, book_path(book.id) %>
+									<%= link_to book.title, book_path(book) %>
 								</span>
 							</td>
 							<td>
