@@ -1,12 +1,12 @@
 <div class="body">
 	<div class="container">
 		<% if flash[:notice] %>
-	    <%= flash[:notice] %>
+		<p style='color: green;'><%= flash[:notice] %></p>
 		<% end %>
 		<div class="row">
 
 			<div class="col-xs-3">
-				<%= render 'users/list', user: @user %>
+				<%= render 'users/list', user: @user, book: @newbook %>
 			</div>
 			<div class="col-xs-9">
 				<h2>Book detail</h2>

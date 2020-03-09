@@ -19,7 +19,7 @@
     <nav class="nav navbar-nav navbar-left">
       <span style="color: white;font-size: 20px;padding-top: 10px;">Bookers</span>
     </nav>
-  </div>
+    <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
         <li><%= link_to ' Home', user_path(current_user.id), class: "glyphicon glyphicon-user users" %></li>
@@ -33,12 +33,13 @@
         <li><%= link_to ' Login', new_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %></li>
         <% end %>
       </ul>
-    </div>
+    </nav>
+  </div>
 </header>
 <body style="padding-top: 50px;">
-  <% flash.each do |key, value| %>
-  <%= content_tag(:div, value, class: "#{key}") %>
-  <% end %>
+  <%# flash.each do |key, value| %>
+  <%#= content_tag(:div, value, class: "#{key}") %>
+  <%# end %>
   <%= yield %>
 </body>
 <footer>
